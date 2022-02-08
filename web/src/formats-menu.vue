@@ -6,7 +6,7 @@
     <i-fe:download class="text-lg"/>
   </headless-menu-button>
   <div ref="container" class="z-30 px-2">
-    <headless-menu-items class="flex flex-col py-1.5 bg-zinc-700 rounded shadow-[0_0_7px_2px] shadow-zinc-900 outline-none divide-y divide-zinc-600 font-mono tracking-tight">
+    <headless-menu-items class="flex flex-col py-1 bg-zinc-700 overflow-hidden rounded shadow-[0_0_7px_2px] shadow-zinc-900 outline-none divide-y divide-zinc-600 font-mono tracking-tight">
       <template v-if="tracks === undefined">
         <i-eos-icons:loading class="mx-4 my-2 text-lg"/>
       </template>

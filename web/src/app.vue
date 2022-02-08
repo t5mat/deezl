@@ -10,7 +10,7 @@
         <input class="rounded-md block w-full text-zinc-300 focus:text-zinc-100 bg-zinc-700 focus:bg-zinc-600 py-2 pl-10 pr-3 leading-5 placeholder-white focus:placeholder-white text-sm" id="search" placeholder="Search" type="search" name="search" v-model="query" v-on:keydown.enter="search()" autofocus/>
       </div>
       <nav class="flex space-x-1.5 sm:ml-2.5 mt-2 sm:mt-0 self-stretch flex items-center">
-        <router-link class="py-2 sm:px-3 sm:py-0 h-full text-sm rounded-md flex-grow sm:flex-grow-0 flex items-center justify-center font-medium" :class="[route.params.category !== category ? 'text-zinc-400 hover:text-zinc-100' : 'bg-zinc-200 font-semibold text-zinc-900']" :to="{params: {category, query}}" v-for="category in ['track', 'album', 'playlist']">
+        <router-link class="py-2 sm:px-3 sm:py-0 h-full text-sm rounded-md flex-grow sm:flex-grow-0 flex items-center justify-center font-medium" :class="[route.params.category !== category ? 'text-zinc-400 hover:text-zinc-100' : 'bg-zinc-200 font-semibold text-zinc-800']" :to="{params: {category, query}}" v-for="category in ['track', 'album', 'playlist']">
           {{ {'track': 'Tracks', 'album': 'Albums', 'playlist': 'Playlists'}[category] }}
         </router-link>
       </nav>
@@ -20,7 +20,7 @@
   <div class="pointer-events-auto bg-amber-700 px-4 md:px-6" v-show="queue.length > 0">
     <div class="max-w-6xl mx-auto py-4 break-words">
       <div :class="{'mb-3': queue.length > 1}" v-for="download in queue.slice(0, 1)" :key="download.key">
-        <div>
+        <div class="leading-snug">
           <i-eos:icons-loading class="inline mr-1 align-middle"/>
           <span class="align-middle font-bold">Downloading&nbsp;&nbsp;</span>
           <a class="align-middle mr-1 hover:underline" :href="download.url" target="_blank">{{ download.displayFilename }}</a>

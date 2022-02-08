@@ -11,7 +11,7 @@
       <a class="align-middle text-zinc-200 hover:underline" :class="{'mr-2': data.explicit}" :href="url" target="_blank">
         {{ data.title }}
       </a>
-      <span v-if="data.explicit" class="pointer-events-none inline-flex items-center -my-10 -mr-8 p-1 transform origin-left scale-[0.6] rounded align-middle font-bold text-zinc-800 bg-zinc-300">
+      <span class="pointer-events-none select-none inline-flex items-center -my-10 -mr-8 p-1 transform origin-left scale-[0.6] rounded align-middle font-bold text-zinc-800 bg-zinc-300" v-if="data.explicit">
         EXPLICIT
       </span>
     </div>
