@@ -55,7 +55,6 @@
 <script setup>
 
 import filesize from 'filesize'
-import {computed, markRaw} from 'vue'
 import {usePopper} from './common'
 import * as deezer from './deezer'
 import PropWatcher from './prop-watcher.vue'

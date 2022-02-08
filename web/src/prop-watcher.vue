@@ -4,8 +4,6 @@
 
 <script setup>
 
-import {watch} from 'vue'
-
 const props = defineProps(['data'])
 const emit = defineEmits(['change'])
 

@@ -52,8 +52,6 @@
 
 <script setup>
 
-import {ref, computed, watchEffect} from 'vue'
-import {useMediaControls} from '@vueuse/core'
 import * as deezer from './deezer'
 import {formatDate, formatSecondsDuration, usePopper} from './common'
 import {ITEM_IMAGE_CONFIG} from './config'

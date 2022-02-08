@@ -107,9 +107,6 @@ body {
 <script setup>
 
 import axios from 'axios'
-import {ref, computed, shallowReactive, watch, onMounted, onUnmounted} from 'vue'
-import {useRouter, useRoute} from 'vue-router'
-import {useHead} from '@vueuse/head'
 import {API, ITEMS_LOAD_SIZE} from './config'
 import {useDownloader} from './downloader'
 import TrackItem from './track-item.vue'

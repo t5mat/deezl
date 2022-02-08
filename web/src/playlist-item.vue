@@ -37,7 +37,6 @@
 
 <script setup>
 
-import {ref, computed} from 'vue'
 import {formatDate} from './common'
 import * as deezer from './deezer'
 import {ITEM_IMAGE_CONFIG, API} from './config'

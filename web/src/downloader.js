@@ -1,7 +1,6 @@
 import sanitizeFilename from 'sanitize-filename'
 import FileSaver from 'file-saver'
 import axios from 'axios'
-import {ref, shallowReactive} from 'vue'
 import * as deezer from './deezer'
 import {zip} from './common'
 import {API, DOWNLOAD_COVER_IMAGE_CONFIG} from './config'
