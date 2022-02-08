@@ -1,12 +1,12 @@
 <template>
 
-<menu_ v-slot="{open}">
+<headless-menu v-slot="{open}">
   <prop-watcher :data="open" @change="openChanged"/>
-  <menu-button ref="trigger">
+  <headless-menu-button ref="trigger">
     <i-fe:download class="text-lg"/>
-  </menu-button>
+  </headless-menu-button>
   <div ref="container" class="z-30 px-2">
-    <menu-items class="flex flex-col py-1.5 bg-zinc-700 rounded shadow-[0_0_7px_2px] shadow-zinc-900 outline-none divide-y divide-zinc-600 font-mono tracking-tight">
+    <headless-menu-items class="flex flex-col py-1.5 bg-zinc-700 rounded shadow-[0_0_7px_2px] shadow-zinc-900 outline-none divide-y divide-zinc-600 font-mono tracking-tight">
       <template v-if="tracks === undefined">
         <i-eos-icons:loading class="mx-4 my-2 text-lg"/>
       </template>
@@ -18,7 +18,7 @@
       </template>
       <template v-else>
         <template v-for="[format, totals] of sortedTotals">
-          <menu-item as="template" v-slot="{active}" v-if="totals[format] !== undefined">
+          <headless-menu-item as="template" v-slot="{active}" v-if="totals[format] !== undefined">
             <button class="px-4 py-1.5 flex flex-col" :class="{['text-zinc-900 bg-zinc-300']: active}" @click="clickFormat(format)">
               <div class="flex items-center font-bold">
                 <template v-if="singleTrack">
@@ -43,12 +43,12 @@
                 </div>
               </template>
             </button>
-          </menu-item>
+          </headless-menu-item>
         </template>
       </template>
-    </menu-items>
+    </headless-menu-items>
   </div>
-</menu_>
+</headless-menu>
 
 </template>
 
@@ -56,7 +56,6 @@
 
 import filesize from 'filesize'
 import {computed, markRaw} from 'vue'
-import {Menu as Menu_, MenuButton, MenuItems, MenuItem} from '@headlessui/vue'
 import {usePopper} from './common'
 import * as deezer from './deezer'
 import PropWatcher from './prop-watcher.vue'

@@ -32,16 +32,16 @@
     {{ formatSecondsDuration(data.duration_seconds) }}
   </div>
   <div class="ml-7 flex-shrink-0 flex" v-if="data.deezer.preview_url !== null">
-    <popover as="template">
-      <popover-button ref="trigger">
+    <headless-popover as="template">
+      <headless-popover-button ref="trigger">
         <i-fontisto:preview class="text-sm"/>
-      </popover-button>
+      </headless-popover-button>
       <div ref="container" class="z-30 px-2 w-[25rem] max-w-[80%]">
-        <popover-panel class="flex p-3 bg-zinc-700 rounded shadow-[0_0_7px_2px] shadow-zinc-900 outline-none">
+        <headless-popover-panel class="flex p-3 bg-zinc-700 rounded shadow-[0_0_7px_2px] shadow-zinc-900 outline-none">
           <audio class="outline-none" ref="previewAudio" :src="props.data.deezer.preview_url" controls/>
-        </popover-panel>
+        </headless-popover-panel>
       </div>
-    </popover>
+    </headless-popover>
   </div>
   <div class="ml-4 flex-shrink-0 flex">
     <formats-menu :singleTrack="true" :tracks="[data]" @clickFormat="formatsClick"/>
@@ -54,7 +54,6 @@
 
 import {ref, computed, watchEffect} from 'vue'
 import {useMediaControls} from '@vueuse/core'
-import {Popover, PopoverButton, PopoverPanel} from '@headlessui/vue'
 import * as deezer from './deezer'
 import {formatDate, formatSecondsDuration, usePopper} from './common'
 import {ITEM_IMAGE_CONFIG} from './config'

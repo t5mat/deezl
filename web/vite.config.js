@@ -4,6 +4,7 @@ import Vue from '@vitejs/plugin-vue'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
+import {HeadlessUiResolver} from 'unplugin-vue-components/resolvers'
 
 export default defineConfig({
   plugins: [
@@ -11,6 +12,7 @@ export default defineConfig({
     Icons(),
     Components({
       resolvers: [
+        HeadlessUiResolver({prefix: 'Headless'}),
         IconsResolver()
       ]
     })
