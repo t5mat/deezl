@@ -7,7 +7,7 @@
         <button class="absolute inset-y-0 left-0 ml-3 p-1 flex items-center" @click="search()">
           <i-fa:solid-search class="w-3 h-3"/>
         </button>
-        <input class="rounded-md block w-full text-zinc-300 focus:text-zinc-100 bg-zinc-700 focus:bg-zinc-600 py-2 pl-10 pr-3 leading-5 placeholder-white focus:placeholder-white text-sm" id="search" placeholder="Search" type="search" name="search" v-model="query" v-on:keydown.enter="search()"/>
+        <input class="rounded-md block w-full text-zinc-300 focus:text-zinc-100 bg-zinc-700 focus:bg-zinc-600 py-2 pl-10 pr-3 leading-5 placeholder-white focus:placeholder-white text-sm" id="search" placeholder="Search" type="search" name="search" v-model="query" v-on:keydown.enter="search()" autofocus/>
       </div>
       <nav class="flex space-x-1.5 sm:ml-2.5 mt-2 sm:mt-0 self-stretch flex items-center">
         <router-link class="py-2 sm:px-3 sm:py-0 h-full text-sm rounded-md flex-grow sm:flex-grow-0 flex items-center justify-center font-medium" :class="[route.params.category !== category ? 'text-zinc-400 hover:text-zinc-100' : 'bg-zinc-200 font-semibold text-zinc-900']" :to="{params: {category, query}}" v-for="category in ['track', 'album', 'playlist']">
