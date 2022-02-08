@@ -1,0 +1,7 @@
+aiohttp
+cryptography
+fastapi
+mutagen
+pillow
+https://github.com/aio-libs/async-lru/archive/1ca97307c2bdb48401a11cac62f9e89b91a55a46.tar.gz
+aiolimiter

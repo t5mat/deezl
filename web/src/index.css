@@ -1,0 +1,14 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import "@fontsource/inter";
+@import "@fontsource/fira-code";
+
+html {
+  font-size: 15px;
+}
+
+button {
+  text-align: start;
+}
