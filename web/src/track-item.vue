@@ -31,7 +31,19 @@
     <i-bx:bx-time class="flex-shrink-0 text-xs mr-1"/>
     {{ formatSecondsDuration(data.duration_seconds) }}
   </div>
-  <div class="ml-7 flex-shrink-0 flex">
+  <div class="ml-7 flex-shrink-0 flex" v-if="data.deezer.preview_url !== null">
+    <popover as="template">
+      <popover-button ref="trigger">
+        <i-fontisto:preview class="text-sm"/>
+      </popover-button>
+      <div ref="container" class="z-30 px-2 w-[25rem] max-w-[80%]">
+        <popover-panel class="flex p-3 bg-zinc-700 rounded shadow-[0_0_7px_2px] shadow-zinc-900 outline-none">
+          <audio :src="data.deezer.preview_url" controls class="w-full outline-none"/>
+        </popover-panel>
+      </div>
+    </popover>
+  </div>
+  <div class="ml-4 flex-shrink-0 flex">
     <formats-menu :singleTrack="true" :tracks="[data]" @clickFormat="formatsClick"/>
   </div>
 </li>
@@ -40,19 +52,39 @@
 
 <script setup>
 
-import {computed} from 'vue'
+import {computed, onMounted, onUnmounted} from 'vue'
+import {Popover, PopoverButton, PopoverPanel} from '@headlessui/vue'
 import * as deezer from './deezer'
-import {formatDate, formatSecondsDuration} from './common'
+import {formatDate, formatSecondsDuration, usePopper} from './common'
 import {ITEM_IMAGE_CONFIG} from './config'
 import FormatsMenu from './formats-menu.vue'
 
 const props = defineProps(['data'])
 const emit = defineEmits(['download'])
 
+const [trigger, container, popper] = usePopper({
+  placement: 'bottom',
+  modifiers: [{
+    name: 'offset', options: {offset: [0, 3]}
+  }],
+})
+
 function formatsClick(format) {
   emit('download', {format, track: props.data})
 }
 
 const url = computed(() => deezer.createTrackUrl(props.data.deezer.id))
+
+const observer = new ResizeObserver(async ([entry]) => {
+  popper.value.update()
+})
+
+onMounted(() => {
+  observer.observe(container.value)
+})
+
+onUnmounted(() => {
+  observer.disconnect()
+})
 
 </script>

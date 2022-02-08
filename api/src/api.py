@@ -149,7 +149,8 @@ def parse_track(gateway_track: dict, api_track: dict | None) -> dict:
         'id': gateway_track['SNG_ID'],
         'md5': gateway_track['MD5_ORIGIN'],
         'media_version': gateway_track['MEDIA_VERSION'],
-        'formats': {format_: size for k, v in gateway_track.items() if (format_ := k.partition('FILESIZE_')[2]) and (size := int(v))}
+        'formats': {format_: size for k, v in gateway_track.items() if (format_ := k.partition('FILESIZE_')[2]) and (size := int(v))},
+        'preview_url': next((m['HREF'] for m in gateway_track['MEDIA'] if m['TYPE'] == 'preview'), None)
     }
 
     return d
