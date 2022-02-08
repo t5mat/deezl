@@ -30,11 +30,13 @@ export const zip = promisify(zip_)
 
 
 import {ref, onMounted, watchEffect} from 'vue'
+import {useResizeObserver} from '@vueuse/core'
 import {createPopper} from '@popperjs/core'
 
 export function usePopper(options) {
   const trigger = ref(null)
   const container = ref(null)
+
   const instance = ref(null)
 
   onMounted(() => {
@@ -54,5 +56,9 @@ export function usePopper(options) {
     })
   })
 
-  return [trigger, container, instance]
+  useResizeObserver(container, ([entry]) => {
+    instance.value.update()
+  })
+
+  return [trigger, container]
 }

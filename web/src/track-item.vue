@@ -52,7 +52,7 @@
 
 <script setup>
 
-import {computed, onMounted, onUnmounted} from 'vue'
+import {computed} from 'vue'
 import {Popover, PopoverButton, PopoverPanel} from '@headlessui/vue'
 import * as deezer from './deezer'
 import {formatDate, formatSecondsDuration, usePopper} from './common'
@@ -62,7 +62,7 @@ import FormatsMenu from './formats-menu.vue'
 const props = defineProps(['data'])
 const emit = defineEmits(['download'])
 
-const [trigger, container, popper] = usePopper({
+const [trigger, container] = usePopper({
   placement: 'bottom',
   modifiers: [{
     name: 'offset', options: {offset: [0, 3]}
@@ -74,17 +74,5 @@ function formatsClick(format) {
 }
 
 const url = computed(() => deezer.createTrackUrl(props.data.deezer.id))
-
-const observer = new ResizeObserver(async ([entry]) => {
-  popper.value.update()
-})
-
-onMounted(() => {
-  observer.observe(container.value)
-})
-
-onUnmounted(() => {
-  observer.disconnect()
-})
 
 </script>

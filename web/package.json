@@ -12,6 +12,7 @@
     "@headlessui/vue": "^1.4.3",
     "@iconify/json": "^2.0.34",
     "@popperjs/core": "^2.11.2",
+    "@vueuse/core": "^7.5.5",
     "axios": "^0.25.0",
     "date-fns": "^2.28.0",
     "fflate": "^0.7.3",

@@ -55,7 +55,7 @@
 <script setup>
 
 import filesize from 'filesize'
-import {computed, markRaw, onMounted, onUnmounted} from 'vue'
+import {computed, markRaw} from 'vue'
 import {Menu as Menu_, MenuButton, MenuItems, MenuItem} from '@headlessui/vue'
 import {usePopper} from './common'
 import * as deezer from './deezer'
@@ -64,7 +64,7 @@ import PropWatcher from './prop-watcher.vue'
 const props = defineProps(['singleTrack', 'tracks'])
 const emit = defineEmits(['open', 'clickFormat'])
 
-const [trigger, container, popper] = usePopper({
+const [trigger, container] = usePopper({
   placement: 'bottom',
   modifiers: [{
     name: 'offset', options: {offset: [0, 3]}
@@ -115,18 +115,6 @@ const sortedTotals = computed(() => {
   }
 
   return markRaw(sortByFormat(totals))
-})
-
-const observer = new ResizeObserver(async ([entry]) => {
-  popper.value.update()
-})
-
-onMounted(() => {
-  observer.observe(container.value)
-})
-
-onUnmounted(() => {
-  observer.disconnect()
 })
 
 </script>
