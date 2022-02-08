@@ -24,6 +24,10 @@
     <i-clarity:number-list-line class="flex-shrink-0 text-xs mr-1"/>
     {{ data.track_count }} {{ data.track_count === 1 ? 'track' : 'tracks' }}
   </div>
+  <div class="ml-4 basis-[4rem] flex-shrink-0 min-w-0 flex sm:hidden items-center justify-end text-sm text-zinc-200 text-opacity-70 tabular-nums tracking-tight">
+    <i-clarity:number-list-line class="flex-shrink-0 text-xs mr-1"/>
+    {{ data.track_count }}
+  </div>
   <div class="ml-7 flex-shrink-0 flex">
     <formats-menu :singleTrack="false" :tracks="tracks" @open="formatsOpen" @clickFormat="formatsClick"/>
   </div>
