@@ -1,5 +1,6 @@
 import {createApp} from 'vue'
 import {createRouter, createWebHistory, RouterView} from 'vue-router'
+import {createHead} from '@vueuse/head'
 import './index.css'
 import App from './app.vue'
 
@@ -16,14 +17,9 @@ router.beforeEach((to, from) => {
   }
 })
 
-router.afterEach((to) => {
-  if (to.params.query.trim().length === 0) {
-    window.document.title = 'deezl'
-  } else {
-    window.document.title = `${to.params.query} - deezl`
-  }
-})
+const head = createHead()
 
 const app = createApp(RouterView)
 app.use(router)
+app.use(head)
 app.mount('#app')

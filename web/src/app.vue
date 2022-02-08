@@ -107,8 +107,9 @@ body {
 <script setup>
 
 import axios from 'axios'
-import {ref, shallowReactive, watch, onMounted, onUnmounted} from 'vue'
+import {ref, computed, shallowReactive, watch, onMounted, onUnmounted} from 'vue'
 import {useRouter, useRoute} from 'vue-router'
+import {useHead} from '@vueuse/head'
 import {API, ITEMS_LOAD_SIZE} from './config'
 import {useDownloader} from './downloader'
 import TrackItem from './track-item.vue'
@@ -117,6 +118,17 @@ import PlaylistItem from './playlist-item.vue'
 
 const router = useRouter()
 const route = useRoute()
+
+useHead({
+  title: computed(() => {
+    if (route.params.query.trim().length === 0) {
+      return 'deezl'
+    } else {
+      return `${route.params.query} - deezl`
+    }
+  })
+})
+
 
 const {errors, queue, dismissError, cancelDownload, downloadTrack, downloadAlbum, downloadPlaylist} = useDownloader()
 
