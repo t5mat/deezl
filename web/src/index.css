@@ -12,3 +12,7 @@ html {
 button {
   text-align: start;
 }
+
+audio {
+  @apply w-full;
+}

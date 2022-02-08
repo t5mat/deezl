@@ -38,7 +38,7 @@
       </popover-button>
       <div ref="container" class="z-30 px-2 w-[25rem] max-w-[80%]">
         <popover-panel class="flex p-3 bg-zinc-700 rounded shadow-[0_0_7px_2px] shadow-zinc-900 outline-none">
-          <audio :src="data.deezer.preview_url" controls class="w-full outline-none"/>
+          <audio class="outline-none" ref="previewAudio" :src="props.data.deezer.preview_url" controls/>
         </popover-panel>
       </div>
     </popover>
@@ -52,7 +52,8 @@
 
 <script setup>
 
-import {computed} from 'vue'
+import {ref, computed, watchEffect} from 'vue'
+import {useMediaControls} from '@vueuse/core'
 import {Popover, PopoverButton, PopoverPanel} from '@headlessui/vue'
 import * as deezer from './deezer'
 import {formatDate, formatSecondsDuration, usePopper} from './common'
@@ -67,6 +68,17 @@ const [trigger, container] = usePopper({
   modifiers: [{
     name: 'offset', options: {offset: [0, 3]}
   }],
+})
+
+const previewAudio = ref(null)
+
+watchEffect(() => {
+  if (!previewAudio.value) {
+    return
+  }
+
+  const {volume} = useMediaControls(previewAudio)
+  volume.value = 0.25
 })
 
 function formatsClick(format) {
