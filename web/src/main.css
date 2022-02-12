@@ -8,6 +8,7 @@
 
 html {
   font-size: 15px;
+  scrollbar-width: thin;
 }
 
 button {
