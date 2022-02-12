@@ -1,9 +1,10 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
-
 @import "@fontsource/inter";
 @import "@fontsource/fira-code";
+
+:root {
+  --color-zinc-800: #27272a;
+  --color-zinc-900: #18181b;
+}
 
 html {
   font-size: 15px;
@@ -14,5 +15,5 @@ button {
 }
 
 audio {
-  @apply w-full;
+  width: 100%;
 }

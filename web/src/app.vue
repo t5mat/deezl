@@ -5,7 +5,7 @@
     <div class="max-w-6xl mx-auto py-2 sm:py-2.5 sm:flex sm:items-center">
       <div class="flex-grow relative">
         <button class="absolute inset-y-0 left-0 ml-3 p-1 flex items-center" @click="search()">
-          <i-fa:solid-search class="w-3 h-3"/>
+          <div class="text-xs i-fa:search"></div>
         </button>
         <input class="rounded-md block w-full text-zinc-300 focus:text-zinc-100 bg-zinc-700 focus:bg-zinc-600 py-2 pl-10 pr-3 leading-5 placeholder-white focus:placeholder-white text-sm" id="search" placeholder="Search" type="search" name="search" v-model="query" v-on:keydown.enter="search()" autofocus/>
       </div>
@@ -21,20 +21,20 @@
     <div class="max-w-6xl mx-auto py-4 break-words">
       <div :class="{'mb-3': queue.length > 1}" v-for="download in queue.slice(0, 1)" :key="download.key">
         <div class="leading-snug">
-          <i-eos:icons-loading class="inline mr-1 align-middle"/>
+          <div class="mr-1 inline-block align-middle i-eos-icons:loading"></div>
           <span class="align-middle font-bold">Downloading&nbsp;&nbsp;</span>
           <a class="align-middle mr-1 hover:underline" :href="download.url" target="_blank">{{ download.displayFilename }}</a>
-          <button @click="cancelDownload(download)"><i-bi:x class="inline align-middle text-lg text-base"/></button>
+          <button @click="cancelDownload(download)" class="align-middle"><div class="inline-block align-middle text-lg i-bi:x"></div></button>
         </div>
-        <div class="mt-1.5 bg-gray-200 rounded h-2.5 dark:bg-gray-700 shadow mb-0.5">
+        <div class="mt-1.5 bg-gray-200 rounded h-2.5 dark:bg-gray-700 shadow-lg mb-0.5">
           <div class="bg-blue-500 h-2.5 rounded" :style="{'width': `${download.progress.value * 100}%`}"></div>
         </div>
       </div>
       <div class="text-sm mt-0.5" v-for="download in queue.slice(1)" :key="download.key">
-        <i-ph:queue-light class="inline mr-1 align-middle"/>
+        <div class="mr-1 inline-block align-middle i-ph:queue-light"></div>
         <span class="align-middle font-bold">Queued&nbsp;&nbsp;</span>
         <a class="align-middle mr-1 hover:underline" :href="download.url" target="_blank">{{ download.displayFilename }}</a>
-        <button @click="cancelDownload(download)"><i-bi:x class="inline align-middle text-lg text-base"/></button>
+        <button @click="cancelDownload(download)" class="align-middle"><div class="inline-block align-middle text-lg i-bi:x"></div></button>
       </div>
     </div>
   </div>
@@ -42,11 +42,11 @@
   <div class="pointer-events-auto bg-red-800 px-4 md:px-6" v-show="errors.length > 0">
     <div class="max-w-6xl mx-auto py-4 space-y-1 break-words">
       <div class="text-sm" v-for="error in errors.slice().reverse()" :key="error.key">
-        <i-ci:error-outline class="inline mr-1 align-middle"/>
+        <div class="mr-1 inline-block align-middle i-ci:error-outline"></div>
         <span class="align-middle font-bold">Error downloading&nbsp;&nbsp;</span>
         <a class="align-middle hover:underline" :href="error.url" target="_blank">{{ error.displayFilename }}</a>
         <span class="align-middle mr-1" v-if="error.trackFilename !== ''">- <a class="hover:underline" :href="error.trackUrl" target="_blank">{{ error.trackFilename }}</a></span>
-        <button @click="dismissError(error)"><i-bi:x class="inline align-middle text-lg text-base"/></button>
+        <button @click="dismissError(error)" class="align-middle"><div class="inline-block align-middle text-lg i-bi:x"></div></button>
       </div>
     </div>
   </div>
@@ -76,10 +76,10 @@
       <div ref="intersect" class="absolute w-full -top-10 h-10 pointer-events-none"></div>
     </div>
     <template v-if="loading">
-      <i-eos-icons:loading class="mx-auto mt-6 w-6 h-6" :class="{'mt-8': total === undefined}"/>
+      <div class="mx-auto mt-6 w-6 h-6 i-eos-icons:loading" :class="{'mt-8': total === undefined}"></div>
     </template>
     <template v-else-if="error">
-      <i-ci:error-outline class="mx-auto mt-6 w-6 h-6" :class="{'mt-8': total === undefined}"/>
+      <div class="mx-auto mt-6 w-6 h-6 i-ci:error-outline" :class="{'mt-8': total === undefined}"></div>
     </template>
   </div>
 </div>
@@ -88,17 +88,13 @@
 
 <style>
 
-body {
-  @apply overflow-x-hidden overflow-y-scroll min-h-screen bg-zinc-900 text-white;
-}
-
 .header-bg {
-  background: radial-gradient(at center, theme('colors.zinc.900'), theme('colors.zinc.800'));
+  background: radial-gradient(at center, var(--color-zinc-900), var(--color-zinc-800));
   background-size: 150% 150%;
 }
 
 .items-divider > * {
-  border-image: linear-gradient(to right, transparent, theme('colors.zinc.800') 25% 75%, transparent);
+  border-image: linear-gradient(to right, transparent, var(--color-zinc-800) 25% 75%, transparent);
   border-image-slice: 1;
 }
 

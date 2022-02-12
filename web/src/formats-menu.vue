@@ -3,15 +3,15 @@
 <headless-menu v-slot="{open}">
   <prop-watcher :data="open" @change="openChanged"/>
   <headless-menu-button ref="trigger">
-    <i-fe:download class="text-lg"/>
+    <div class="text-xl i-fe:download"></div>
   </headless-menu-button>
   <div ref="container" class="z-30 px-2">
-    <headless-menu-items class="flex flex-col py-1 bg-zinc-700 overflow-hidden rounded shadow-[0_0_7px_2px] shadow-zinc-900 outline-none divide-y divide-zinc-600 font-mono tracking-tight">
+    <headless-menu-items class="flex flex-col py-1 bg-zinc-700 overflow-hidden rounded shadow-lg outline-none divide-y divide-zinc-600 font-mono tracking-tight">
       <template v-if="tracks === undefined">
-        <i-eos-icons:loading class="mx-4 my-2 text-lg"/>
+        <div class="mx-4 my-2 text-xl i-eos-icons:loading"></div>
       </template>
       <template v-else-if="tracks === null">
-        <i-ci:error-outline class="mx-4 my-2 text-lg"/>
+        <div class="mx-4 my-2 text-xl i-ci:error-outline"></div>
       </template>
       <template v-else-if="sortedTotals.length === 0">
         <div class="mx-4 my-2 text-sm">No avaliable formats</div>
@@ -22,10 +22,10 @@
             <button class="px-4 py-1.5 flex flex-col" :class="{['text-zinc-900 bg-zinc-300']: active}" @click="clickFormat(format)">
               <div class="flex items-center font-bold">
                 <template v-if="singleTrack">
-                  <i-mi:document-empty class="text-xs mr-2"/>
+                  <div class="mr-2 i-mi:document-empty"></div>
                 </template>
                 <template v-else>
-                  <i-mi:archive class="text-xs mr-2"/>
+                  <div class="mr-2 i-mi:archive"></div>
                 </template>
                 <div>
                   {{ deezer.FORMATS_DISPLAY_NAMES[format] }}
@@ -36,7 +36,7 @@
                 </div>
               </div>
               <template v-for="[f, [c, s]] of sortByFormat(totals)">
-                <div class="ml-[1.4rem]" v-if="f != format">
+                <div class="ml-1.4rem" v-if="f != format">
                   + {{ deezer.FORMATS_DISPLAY_NAMES[f] }}
                   ({{ c }}/{{ tracksCount }})
                   ~{{ filesize(s) }}

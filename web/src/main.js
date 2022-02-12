@@ -1,7 +1,10 @@
+import '@unocss/reset/tailwind.css'
+import 'uno.css'
+import './main.css'
+
 import {createApp} from 'vue'
 import {createRouter, createWebHistory, RouterView} from 'vue-router'
 import {createHead} from '@vueuse/head'
-import './index.css'
 import App from './app.vue'
 
 const router = createRouter({

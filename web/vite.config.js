@@ -1,16 +1,28 @@
 import {defineConfig} from 'vite'
 import {resolve} from 'path'
+import UnoCss from 'unocss/vite'
+import presetWind from '@unocss/preset-wind'
+import {presetIcons} from 'unocss'
 import Vue from '@vitejs/plugin-vue'
-import Icons from 'unplugin-icons/vite'
-import IconsResolver from 'unplugin-icons/resolver'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import {HeadlessUiResolver} from 'unplugin-vue-components/resolvers'
 
 export default defineConfig({
   plugins: [
+    UnoCss({
+      theme: {
+        fontFamily: {
+          sans: 'Inter',
+          mono: 'Fira Code'
+        },
+      },
+      presets: [
+        presetWind(),
+        presetIcons()
+      ]
+    }),
     Vue(),
-    Icons(),
     AutoImport({
       imports: [
         'vue',
@@ -21,8 +33,7 @@ export default defineConfig({
     }),
     Components({
       resolvers: [
-        HeadlessUiResolver({prefix: 'Headless'}),
-        IconsResolver()
+        HeadlessUiResolver({prefix: 'Headless'})
       ]
     })
   ],
