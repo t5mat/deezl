@@ -10,8 +10,8 @@
         <input class="rounded-md block w-full text-zinc-300 focus:text-zinc-100 bg-zinc-700 focus:bg-zinc-600 py-2 pl-10 pr-3 leading-5 placeholder-white focus:placeholder-white text-sm" id="search" placeholder="Search" type="search" name="search" v-model="query" v-on:keydown.enter="search()" autofocus/>
       </div>
       <nav class="flex space-x-1.5 sm:ml-2.5 mt-2 sm:mt-0 self-stretch flex items-center">
-        <router-link class="py-2 sm:px-3 sm:py-0 h-full text-sm rounded-md flex-grow sm:flex-grow-0 flex items-center justify-center font-medium" :class="[route.params.category !== category ? 'text-zinc-400 hover:text-zinc-100' : 'bg-zinc-200 font-semibold text-zinc-800']" :to="{params: {category, query}}" v-for="category in ['track', 'album', 'playlist']">
-          {{ {'track': 'Tracks', 'album': 'Albums', 'playlist': 'Playlists'}[category] }}
+        <router-link class="py-2 sm:px-3 sm:py-0 h-full text-sm rounded-md flex-grow sm:flex-grow-0 flex items-center justify-center font-medium" :class="[route.params.category !== category ? 'text-zinc-400 hover:text-zinc-100' : 'bg-zinc-200 font-semibold text-zinc-800']" :to="{params: {category, query}}" v-for="category in ['tracks', 'albums', 'playlists']">
+          {{ {'tracks': 'Tracks', 'albums': 'Albums', 'playlists': 'Playlists'}[category] }}
         </router-link>
       </nav>
     </div>
@@ -58,16 +58,16 @@
   <div class="my-6 max-w-6xl mx-auto">
     <template v-if="total !== undefined">
       <div class="text-xl font-bold text-zinc-300">
-        {{ total }} {{ {'track': ['track', 'tracks'], 'album': ['album', 'albums'], 'playlist': ['playlist', 'playlists']}[route.params.category][+(total !== 1)] }} found.
+        {{ total }} {{ {'tracks': ['track', 'tracks'], 'albums': ['album', 'albums'], 'playlists': ['playlist', 'playlists']}[route.params.category][+(total !== 1)] }} found.
       </div>
       <ul class="divide-y items-divider mt-4 -my-1.5">
-        <template v-if="route.params.category === 'track'">
+        <template v-if="route.params.category === 'tracks'">
           <track-item class="py-1.5" v-for="item in items" :key="item.deezer.id" :data="item" @download="downloadTrack"></track-item>
         </template>
-        <template v-else-if="route.params.category === 'album'">
+        <template v-else-if="route.params.category === 'albums'">
           <album-item class="py-1.5" v-for="item in items" :key="item.deezer.id" :data="item" @download="downloadAlbum"></album-item>
         </template>
-        <template v-else-if="route.params.category === 'playlist'">
+        <template v-else-if="route.params.category === 'playlists'">
           <playlist-item class="py-1.5" v-for="item in items" :key="item.deezer.id" :data="item" @download="downloadPlaylist"></playlist-item>
         </template>
       </ul>
@@ -147,7 +147,7 @@ const observer = new IntersectionObserver(async ([entry]) => {
     try {
       const params = {
         query: route.params.query,
-        type: route.params.category,
+        type: {'tracks': 'track', 'albums': 'album', 'playlists': 'playlist'}[route.params.category],
         index: next,
         limit: ITEMS_LOAD_SIZE
       }

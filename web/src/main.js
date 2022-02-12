@@ -15,8 +15,8 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from) => {
-  if (!['track', 'album', 'playlist'].includes(to.params.category)) {
-    return '/track'
+  if (!['tracks', 'albums', 'playlists'].includes(to.params.category)) {
+    return '/tracks'
   }
 })
 
