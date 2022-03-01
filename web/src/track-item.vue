@@ -33,8 +33,8 @@
   </div>
   <div class="ml-7 flex-shrink-0 flex" v-if="data.deezer.preview_url !== null">
     <headless-popover as="template">
-      <headless-popover-button ref="trigger">
-        <div class="flex-shrink-0 i-fontisto:preview"></div>
+      <headless-popover-button>
+        <div ref="trigger" class="flex-shrink-0 i-fontisto:preview"></div>
       </headless-popover-button>
       <div ref="container" class="z-30 px-2 w-25rem max-w-80%">
         <headless-popover-panel class="flex p-3 bg-zinc-700 overflow-hidden rounded shadow-lg outline-none">

@@ -7,27 +7,27 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@fontsource/fira-code": "^4.5.4",
-    "@fontsource/inter": "^4.5.3",
-    "@headlessui/vue": "^1.4.3",
+    "@fontsource/fira-code": "^4.5.5",
+    "@fontsource/inter": "^4.5.4",
+    "@headlessui/vue": "^1.5.0",
     "@popperjs/core": "^2.11.2",
-    "@vueuse/core": "^7.6.0",
+    "@vueuse/core": "^7.7.0",
     "@vueuse/head": "^0.7.5",
-    "axios": "^0.25.0",
+    "axios": "^0.26.0",
     "date-fns": "^2.28.0",
     "fflate": "^0.7.3",
     "file-saver": "^2.0.5",
     "filesize": "^8.0.7",
     "sanitize-filename": "^1.6.3",
-    "vue": "^3.2.30",
-    "vue-router": "^4.0.12"
+    "vue": "^3.2.31",
+    "vue-router": "^4.0.13"
   },
   "devDependencies": {
-    "@iconify/json": "^2.0.36",
-    "@vitejs/plugin-vue": "^2.1.0",
-    "unocss": "^0.24.3",
+    "@iconify/json": "^2.1.8",
+    "@vitejs/plugin-vue": "^2.2.4",
+    "unocss": "^0.27.0",
     "unplugin-auto-import": "^0.5.11",
-    "unplugin-vue-components": "^0.17.18",
+    "unplugin-vue-components": "^0.17.21",
     "vite": "^2.7.2"
   }
 }

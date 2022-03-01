@@ -41,22 +41,27 @@ export function usePopper(options) {
 
   onMounted(() => {
     watchEffect((onInvalidate) => {
-      if (!container.value || !trigger.value) {
+      if (!trigger.value || !container.value) {
         return
       }
 
-      const containerElement = container.value.el ?? container.value
       const triggerElement = trigger.value.el ?? trigger.value
+      const containerElement = container.value.el ?? container.value
       if (!(triggerElement instanceof HTMLElement) || !(containerElement instanceof HTMLElement)) {
         return
       }
 
       instance.value = createPopper(triggerElement, containerElement, options)
-      onInvalidate(instance.value.destroy)
+      onInvalidate(() => {
+        instance.value.destroy()
+      })
     })
   })
 
-  useResizeObserver(container, ([entry]) => {
+  useResizeObserver(container, () => {
+    if (!instance.value) {
+      return
+    }
     instance.value.update()
   })
 

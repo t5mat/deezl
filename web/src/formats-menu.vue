@@ -2,8 +2,8 @@
 
 <headless-menu v-slot="{open}">
   <prop-watcher :data="open" @change="openChanged"/>
-  <headless-menu-button ref="trigger">
-    <div class="text-xl i-fe:download"></div>
+  <headless-menu-button>
+    <div ref="trigger" class="text-xl i-fe:download"></div>
   </headless-menu-button>
   <div ref="container" class="z-30 px-2">
     <headless-menu-items class="flex flex-col py-1 bg-zinc-700 overflow-hidden rounded shadow-lg outline-none divide-y divide-zinc-600 font-mono tracking-tight">
