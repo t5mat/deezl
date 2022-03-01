@@ -26,7 +26,7 @@
           <a class="align-middle mr-1 hover:underline" :href="download.url" target="_blank">{{ download.displayFilename }}</a>
           <button @click="cancelDownload(download)" class="align-middle"><div class="inline-block align-middle text-lg i-bi:x"></div></button>
         </div>
-        <div class="mt-1.5 bg-gray-200 rounded h-2.5 dark:bg-gray-700 shadow-lg mb-0.5">
+        <div class="mt-2.5 bg-gray-200 rounded h-2.5 dark:bg-gray-700 shadow-lg mb-0.5">
           <div class="bg-blue-500 h-2.5 rounded" :style="{'width': `${download.progress.value * 100}%`}"></div>
         </div>
       </div>
